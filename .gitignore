@@ -1,0 +1,26 @@
+# .NET build and publish output
+bin/
+obj/
+publish/
+artifacts/
+TestResults/
+*.nupkg
+*.snupkg
+
+# IDE and user-specific files
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs and coverage output
+*.log
+coverage/
+coverage.*
+
+# OS metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
