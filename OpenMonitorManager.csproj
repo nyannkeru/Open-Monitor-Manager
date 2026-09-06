@@ -12,10 +12,23 @@
     <Version>0.1.0</Version>
     <Authors>Open Monitor Manager contributors</Authors>
     <Description>DDC/CI monitor controller with automatic recovery.</Description>
+    <RuntimeIdentifier Condition="'$(Configuration)' == 'Release'">win-x64</RuntimeIdentifier>
+    <SelfContained Condition="'$(Configuration)' == 'Release'">true</SelfContained>
+    <PublishSingleFile Condition="'$(Configuration)' == 'Release'">true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract Condition="'$(Configuration)' == 'Release'">true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile Condition="'$(Configuration)' == 'Release'">true</EnableCompressionInSingleFile>
+    <PublishDir Condition="'$(Configuration)' == 'Release'">$(MSBuildProjectDirectory)\publish\win-x64\</PublishDir>
     <DebugType Condition="'$(Configuration)' == 'Release'">none</DebugType>
     <DebugSymbols Condition="'$(Configuration)' == 'Release'">false</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Assets\AppIcon.png" />
   </ItemGroup>
+
+  <Target Name="CopyPublishedExecutableToProjectRoot"
+          AfterTargets="Publish"
+          Condition="'$(Configuration)' == 'Release'">
+    <Copy SourceFiles="$(PublishDir)$(AssemblyName).exe"
+          DestinationFiles="$(MSBuildProjectDirectory)\$(AssemblyName).exe" />
+  </Target>
 </Project>

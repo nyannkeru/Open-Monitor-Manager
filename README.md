@@ -51,6 +51,15 @@ Requirements: Windows and the .NET 10 SDK.
 dotnet build ".\OpenMonitorManager.csproj" -c Release
 ```
 
+Create the distributable single-file executable:
+
+```powershell
+dotnet publish ".\OpenMonitorManager.csproj" -c Release
+```
+
+The resulting `OpenMonitorManager.exe` is placed in the project root. Build and
+publish intermediates remain under `bin/`, `obj/`, and `publish/`.
+
 Run:
 
 ```powershell
